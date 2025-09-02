@@ -15,11 +15,18 @@ public class MainApp {
             new AnnotationConfigApplicationContext(AppConfig.class);
 
       UserService userService = context.getBean(UserService.class);
-
-      userService.add(new User("User1", "Lastname1", "user1@mail.ru", new Car("Car1", 1)));
-      userService.add(new User("User2", "Lastname2", "user2@mail.ru", new Car("Car2", 2)));
-      userService.add(new User("User3", "Lastname3", "user3@mail.ru", new Car("Car3", 3)));
-      userService.add(new User("User4", "Lastname4", "user4@mail.ru", new Car("Car4", 4)));
+      User user1 = new User("User1", "Lastname1", "user1@mail.ru");
+      User user2 = new User("User2", "Lastname2", "user2@mail.ru");
+      User user3 = new User("User3", "Lastname3", "user3@mail.ru");
+      User user4 = new User("User4", "Lastname4", "user4@mail.ru");
+      user1.setCar(new Car("Car1", 1));
+      user2.setCar(new Car("Car2", 2));
+      user3.setCar(new Car("Car3", 3));
+      user4.setCar(new Car("Car4", 4));
+      userService.add(user1);
+      userService.add(user2);
+      userService.add(user3);
+      userService.add(user4);
 
       List<User> users = userService.listUsers();
       for (User user : users) {
